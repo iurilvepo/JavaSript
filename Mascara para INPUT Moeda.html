@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rateio de Água</title>
+
+    <!-- CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <form action="ajax/addAgua.php" method="post">
+        <center><h3><img src="imagens/aguagas.png" width="40" height="40"><b> TELEMETRIA DA ÁGUA</b></h3></center>
+        <h3><b>Bloco A e B</b></h3>
+        <label for="aguatotal" class="form-label">Valor Água Total:</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text">R$: </span>
+
+<!-- Adiciona //oninput="formatarMoeda(this)"// no input que será inserido o valor! -->
+            <input type="text" name="aguatotal" id="aguatotal" class="form-control" value="0.00" oninput="formatarMoeda(this)" required>
+        </div>
+
+        <label for="volcompago" class="form-label">Volume Consumo Pago (m³):</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text">M³: </span>
+            <input type="text" name="volcompago" id="volcompago" class="form-control" value="0.00" required>
+        </div>
+
+        <h3><b>Bloco C</b></h3>
+        <label for="aguablc" class="form-label">Valor Água Bloco C:</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text">R$: </span>
+
+<!-- Adiciona //oninput="formatarMoeda(this)"// no input que será inserido o valor! -->
+            <input type="text" name="aguablc" id="aguablc" class="form-control" value="0.00" oninput="formatarMoeda(this)" required>
+        </div>
+</br>
+<hr/>
+    <div class="row">
+
+            <div class="input-group mb-3 col">
+                <span class="input-group-text"><b>Mês Ref.: </b></span>
+                    <select name="mesref" id="mesref" class="form-select" aria-label="Default select example" required>
+                    <option selected>Selecione um mês!</option>
+                    <option value="1">Janeiro</option>
+                    <option value="2">Fevereiro</option>
+                    <option value="3">Março</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Maio</option>
+                    <option value="6">Junho</option>
+                    <option value="7">Julho</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                    </select>
+            </div>
+
+            <div class="input-group mb-3 col">
+                <span class="input-group-text"><b>Ano Ref.: </b></span>
+                    <select name="anoref" id="anoref" class="form-select" aria-label="Default select example" required>
+                    <option selected>Selecione um ano!</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                    </select>
+            </div>
+    </div>
+
+</br>
+        <center>
+<!-- Botão voltar -->
+        <a href="javascript:history.go(-1)" class="btn btn-secondary">Voltar</a>
+<!-- Botão Cadastrar valores!-->
+        <button type="submit" class="btn btn-primary">Cadastrar Valores!</button>
+        </center>
+    </form>
+    
+</div>
+
+<!-- Script para MASCARA campo input de MOEDAS -->
+
+<script>
+        function formatarMoeda(input) {
+            // Obtém o valor atual do campo de entrada
+            let valor = input.value;
+
+            // Remove caracteres não numéricos
+            valor = valor.replace(/[^\d]/g, '');
+
+            // Formata como número e adiciona ponto e vírgula
+            valor = (parseInt(valor) / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            // Atualiza o valor no campo de entrada
+            input.value = valor;
+        }
+    </script>
+
+<!-- Adicione os scripts do Bootstrap no final do corpo do documento -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
